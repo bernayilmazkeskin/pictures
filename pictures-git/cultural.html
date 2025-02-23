@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cultural</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center my-4">Cultural</h1>
+        <div class="row" id="gallery2"></div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Kopru Gorselleri</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span inert> Exit</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <img src="" class="img-fluid" id="modalImage" alt="Selected image">
+            </div>
+            <div id="link">
+                <span><a href="index.html">Ana Sayfaya Dön</a></span>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        const images = [
+            'images/cul1.jpg',
+            'images/cul2.jpg',
+            'images/cul3.jpg',
+            'images/cul4.jpg',
+            'images/cul5.jpg',
+            'images/cul6.jpg',
+            'images/cul7.jpg',
+        ];
+
+        const gallery = document.getElementById('gallery2');
+
+        images.forEach((image, index) => {
+            const col = document.createElement('div');
+            col.className = 'col-lg-4 col-md-6 mb-4';
+
+            const img = document.createElement('img');
+            img.src = image;
+            img.alt = `Image ${index}`;
+            img.className = 'img-thumbnail';
+            img.setAttribute('data-toggle', 'modal');
+            img.setAttribute('data-target', '#imageModal');
+            img.onclick = function () {
+                document.getElementById('modalImage').src = image;
+            };
+
+            col.appendChild(img);
+            gallery.appendChild(col);
+        });
+    </script>
+</body>
+</html>
